@@ -1,4 +1,4 @@
-﻿FROM ubuntu:20.04 
+FROM ubuntu:20.04 
 
 # 필요한 종속성 설치
 RUN apt-get update && apt-get install -y \
@@ -13,9 +13,6 @@ RUN apt-get update && apt-get install -y \
 # Darknet 소스 코드 클론 및 작업 디렉토리 설정
 RUN git clone https://github.com/pjreddie/darknet /darknet
 WORKDIR /darknet
-
-# OpenCV 사용 끄기 (libopencv-dev 설치 안 했으니까)
-RUN sed -i 's/OPENCV=1/OPENCV=0/' Makefile
 
 # YOLOv3 사전 학습된 가중치 파일 다운로드
 RUN wget https://data.pjreddie.com/files/yolov3.weights
